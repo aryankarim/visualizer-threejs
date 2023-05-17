@@ -31,8 +31,7 @@ controls.target.set(0, 0.5, 0);
 controls.update();
 controls.enablePan = false;
 
-export const actions = (time: number) => {
-  time *= 0.0001;
+export const actions = () => {
   checkForResize();
   controls.update();
 };
