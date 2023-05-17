@@ -6,12 +6,34 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
+
+    <style>
+      .btns {
+        position: absolute;
+        display: flex;
+        gap: 4rem;
+        width: 100%;
+        justify-content: space-around;
+        top: 1rem;
+      }
+
+      .btns > button {
+        color: white;
+        background-color: black;
+        padding: 1rem;
+        border-radius: 2rem;
+        border-color: white;
+      }
+    </style>
     <title>Visualizer</title>
   </head>
   <body>
     <canvas id="c"></canvas>
-    <button onclick="startRecording()">Start Recording</button>
-    <button onclick="stopRecording()">Stop Recording</button>
+    <div class="btns">
+      <button onclick="startRecording()">Start Recording</button>
+      <button onclick="stopRecording()">Stop Recording</button>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
