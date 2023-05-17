@@ -4,8 +4,8 @@ import "./environment/paint";
 import "./controllers/listeners";
 import { actions } from "./controllers/actions";
 
-let render = function (time: number) {
-  actions(time);
+let render = function () {
+  actions();
   renderer.render(scene, camera.camera);
   requestAnimationFrame(render);
 };
