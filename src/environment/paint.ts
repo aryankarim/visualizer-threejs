@@ -1,16 +1,19 @@
 import { scene } from "./renderer";
 import * as THREE from "three";
 
-const boxes = new Array(256).fill(new THREE.BoxGeometry(1, 1, 1));
+let bars = 256;
+
+const boxes = new Array(bars).fill(new THREE.BoxGeometry(1, 1, 1));
 
 const lines = boxes.map((box, i) => {
-  const depthMesh = new THREE.MeshPhongMaterial({ color: 0x666666 });
+  const depthMesh = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
 
   const mesh = new THREE.Mesh(box, depthMesh);
-  mesh.position.x = i * 1.2;
 
-  mesh.scale.y = i + 0.5;
-  mesh.rotateX(10);
+  mesh.position.x = -(bars / 2) + i;
+
+  mesh.scale.y = 1;
+  mesh.rotateX(0);
   scene.add(mesh);
   return mesh;
 });
@@ -31,7 +34,7 @@ function startRecording() {
 
       audioSource = audioContext.createMediaStreamSource(stream);
 
-      scriptNode = audioContext.createScriptProcessor(256, 1, 1);
+      scriptNode = audioContext.createScriptProcessor(bars, 1, 1);
       scriptNode.onaudioprocess = processAudio;
 
       audioSource.connect(scriptNode);
@@ -59,7 +62,7 @@ function processAudio(event: any) {
   const inputData = inputBuffer.getChannelData(0);
 
   inputData.map((newNum: number, i: number) => {
-    lines[i].scale.x = newNum * 200;
+    lines[i].scale.y = newNum * 200;
   });
 }
 (window as any).startRecording = startRecording;
