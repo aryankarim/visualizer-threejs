@@ -6,12 +6,12 @@ const camera = new Camera();
 let scene = new THREE.Scene();
 
 const color = 0xffffff;
-const intensity = 6;
+const intensity = 1;
 const light = new THREE.PointLight(color, intensity);
-light.position.set(50, 20, 10);
+light.position.set(0, 20, 200);
 
 const light2 = new THREE.PointLight(color, intensity);
-light2.position.set(-50, -20, -10);
+light2.position.set(0, -20, -200);
 scene.add(light);
 scene.add(light2);
 
